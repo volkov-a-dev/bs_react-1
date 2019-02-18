@@ -1,0 +1,18 @@
+.persone-block {
+    display: flex;
+    align-items: center;
+    background-color: rgb(40, 44, 52);
+    color: #fff;
+    padding: 12px 40px;
+    border-bottom: 1px solid #ddd;
+}
+
+.persone-block__name {
+    margin: 0;
+}
+
+.persone-block__age {
+    margin: 0 0 0 auto;
+    padding-left: 20px;
+    font-weight: 500;
+}

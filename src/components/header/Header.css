@@ -1,0 +1,7 @@
+.main-header {
+    display: flex;
+    padding: 0 40px;
+    background-color: #20232a;
+    color: #fff;
+    min-height: 50px;
+}
