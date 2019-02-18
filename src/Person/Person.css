@@ -17,8 +17,8 @@
     font-weight: 500;
 }
 
-/* @media (min-width: 500px) {
-    .Persone {
+@media (min-width: 500px) {
+    .persone-block {
         width: 450px;
     }
-} */
+}
