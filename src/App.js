@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-import Radium from 'radium';
 
 import Person from './Person/Person';
 import Header from './components/header/Header';
@@ -66,9 +65,6 @@ class App extends Component {
       border: '10px solid blue',
       padding: '8px',
       cursor: 'pointer',
-      ':hover': {
-        backgroundColor: 'lightgreen'
-      }
     }
 
     let persons = null;
@@ -90,11 +86,6 @@ class App extends Component {
       );
 
       style.backgroundColor = 'red';
-      style[':hover'] = {
-        backgroundColor: 'black',
-        color: '#fff',
-      }
-  
     }
 
  
@@ -108,7 +99,6 @@ class App extends Component {
       classes.push('bold') // classes = ['red', 'bold']
     }
 
-
     return (
       <div className="App wrapp">
         <Header />
@@ -121,11 +111,10 @@ class App extends Component {
           onClick={this.resetChangeHandler}>Reset</button>
         <div className="wrapp__mid">
           {persons}
-
         </div>
       </div>
     );
   }
 }
 
-export default Radium(App);
+export default App;
