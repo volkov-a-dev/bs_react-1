@@ -1,8 +1,8 @@
 import React from 'react';
 import './Person.css';
-import Radium from 'radium';
 
 let persone = function (props) {
+    
     return (
         <section className="persone-block">
             <h2 className="persone-block__name"
@@ -20,4 +20,4 @@ let persone = function (props) {
     )
 }
 
-export default Radium(persone);
+export default persone;

@@ -20,9 +20,9 @@ class App extends Component {
   resetChangeHandler = () => {
     this.setState({
       persons: [
-        { name : 'Max', age: 23 },
-        { name : 'Manu', age: 25 },
-        { name : 'Stephanie', age: 26 },
+        { id: '1', name : 'Max', age: 23 },
+        { id: '2', name : 'Manu', age: 25 },
+        { id: '3', name : 'Stephanie', age: 26 },
       ]
     })
   }
