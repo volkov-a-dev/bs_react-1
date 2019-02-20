@@ -8,6 +8,7 @@ import Cockpit from '../components/Cockpit/Cockpit';
 
 import withClass from '../hoc/withClass';
 import Aux from '../hoc/Aux';
+import AuthContext from '../context/auth-context';
 
 class App extends Component {
   constructor(props) {
@@ -23,7 +24,8 @@ class App extends Component {
     ],
     showPersons: false,
     showCocpit: true,
-    changeCounter: 0
+    changeCounter: 0,
+    authenticated: false,
   };
 
   // static getDerivedStateFromProps(props, state) {
@@ -61,6 +63,7 @@ class App extends Component {
     const persons = [...this.state.persons];
     persons[personIndex] = person;
 
+    //Update state correctly
     this.setState((prevState, props) => {
       return {
         persons: persons, 
@@ -72,6 +75,10 @@ class App extends Component {
   togglePersonsHandler = () => {
     const doesShow = this.state.showPersons;
     this.setState({showPersons: !doesShow})
+  }
+
+  loginHandler = () => {
+    this.setState({authenticated: true})
   }
 
   deletePersonHandler = (personIndex) => {
@@ -90,7 +97,9 @@ class App extends Component {
       persons = <Persons 
           persons={this.state.persons}
           clicked={this.deletePersonHandler} 
-          changed={this.nameChangeHandler} />
+          changed={this.nameChangeHandler} 
+          isAuthenticated={this.state.authenticated}
+        />
     }
   
     return (
@@ -99,15 +108,25 @@ class App extends Component {
         <Header />
         <Body />
         <button onClick={() => {this.setState({showCocpit: false})}}>Remove Cockpit</button>
-        {this.state.showCocpit ? (
-        <Cockpit
-          title={this.props.appTitle}
-          showPersons={this.state.showPersons}
-          personsLength={this.state.persons.length} 
-          clicked={this.togglePersonsHandler} />) : null}
-        <div className="wrapp__mid">
-          {persons}
-        </div>
+        <AuthContext.Provider 
+          value={{
+            authenticated: this.state.authenticated,
+            login: this.loginHandler
+          }}
+        >
+  
+          {this.state.showCocpit ? (
+            <Cockpit
+              title={this.props.appTitle}
+              showPersons={this.state.showPersons}
+              personsLength={this.state.persons.length} 
+              clicked={this.togglePersonsHandler} 
+            />
+          ) : null}
+          <div className="wrapp__mid">
+            {persons}
+          </div>
+        </AuthContext.Provider>
       </Aux>
     );
   }
